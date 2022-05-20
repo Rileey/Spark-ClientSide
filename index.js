@@ -37,7 +37,7 @@ app.get('/', (req, res)=> {
     res.send('it is working')
 })
 
-const port = process.env.PORT || 8800;
+const port = 8800;
 
 
 app.listen(port, () => {
