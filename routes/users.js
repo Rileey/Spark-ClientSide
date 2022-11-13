@@ -140,14 +140,35 @@ router.delete('/:id', async (req, res) => {
 
 //GET
 
-router.get('/find/:id', async (req, res) => {
+// router.get('/find/:id', async (req, res) => {
+//     //fetch the user using the user id.
+//         try {
+//             const user = await User.findById(req.params.id)
+//             .populate({
+//                 path: "_posts",
+//                 select: "description video createdAt _id"
+//             })
+//             ;
+
+//             //single out the password and remove it from the rest of the information displayed.
+//             const { 
+//                 // password, 
+//                 ...info } = user._doc
+//             //return the user's information
+//             res.status(200).json(info);
+//         } catch (err) {
+//             //catch any errors.
+//             res.status(500).json(err)
+//         }
+// })
+
+router.get('/find', async (req, res) => {
+    const {id, username} = req.query
     //fetch the user using the user id.
         try {
-            const user = await User.findById(req.params.id)
-            .populate({
-                path: "_posts",
-                select: "description video createdAt _id"
-            })
+            const user = id 
+            ? await User.findById(id) 
+            : await User.findOne({ username : username })
             ;
 
             //single out the password and remove it from the rest of the information displayed.
@@ -155,6 +176,7 @@ router.get('/find/:id', async (req, res) => {
                 // password, 
                 ...info } = user._doc
             //return the user's information
+            console.log(user.username)
             res.status(200).json(info);
         } catch (err) {
             //catch any errors.
@@ -219,17 +241,29 @@ router.put('/:id/unfollow', async (req, res) => {
 
 //GET ALL
 
+// router.get('/', async (req, res) => {
+//     const query = req.query.new;
+//     // if you are the admin
+//         //get the user using the user id and delete the user.
+//         try {
+//             //fetch the last ten users if there is a query, if not fetch all users excluding you
+//             const users = query ? await User.find().sort({_id: -1}).limit(5) : await User.find().populate({
+//                 path: "_posts",
+//                 select: "description video createdAt _id"
+//             })
+//             res.status(200).json(users);
+//         } catch (err) {
+//             res.status(500).json(err)
+//         }
+// })
+
 router.get('/', async (req, res) => {
-    const query = req.query.new;
+    // const query = req.query.new;
     // if you are the admin
-        //get the user using the user id and delete the user.
         try {
             //fetch the last ten users if there is a query, if not fetch all users excluding you
-            const users = query ? await User.find().sort({_id: -1}).limit(5) : await User.find().populate({
-                path: "_posts",
-                select: "description video createdAt _id"
-            })
-            res.status(200).json(users);
+            const users = await User.find()
+            res.status(200).json(users)
         } catch (err) {
             res.status(500).json(err)
         }
