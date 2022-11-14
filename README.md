@@ -124,7 +124,7 @@ This is what the user collection looks like
     timestamps: true 
 }
 ![MovieCollection](Readme-Images/Movies-Collection.png)
-![MovieSchema](Readme-Images/Movies-Schema.png)
+![MovieSchema](Readme-Images/Movie-Schema.png)
 
 ## Movie List collection and Data Type
 {
