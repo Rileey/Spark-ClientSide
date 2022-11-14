@@ -74,7 +74,7 @@ The spark project would need different collections that can serve the user in th
 
 ## Users collection
 {
-    username: String
+    username: String,
     phoneNumber: Number,
     email: String,
     password: String,
@@ -86,12 +86,14 @@ The spark project would need different collections that can serve the user in th
     isAdmin: Boolean,
     timestamps: true 
 }
+![UsersCollection](spark-BE/Readme-Images/User-Collection.png)
+![UsersSchema](spark-BE/Readme-Images/User-Schema.png)
 
 This is what the user collection looks like
 
 ## Content collection and Data Type
 {
-    title: String
+    title: String,
     video: Array,
     year: Number,
     ageLimit: Number,
@@ -101,6 +103,8 @@ This is what the user collection looks like
     genre: String,
     timestamps: true 
 }
+![ContentCollection](spark-BE/Readme-Images/Content-Collection.png)
+![ContentSchema](spark-BE/Readme-Images/Content-Schema.png)
 
 ## Movie collection and Data Type
 {
@@ -119,6 +123,8 @@ This is what the user collection looks like
     isSeries: Boolean,
     timestamps: true 
 }
+![MovieCollection](spark-BE/Readme-Images/Movies-Collection.png)
+![MovieSchema](spark-BE/Readme-Images/Movies-Schema.png)
 
 ## Movie List collection and Data Type
 {
@@ -129,8 +135,8 @@ This is what the user collection looks like
     content: Array,
     timestamps: true 
 }
-
-This is what the user collection looks like
+![ListCollection](spark-BE/Readme-Images/List-Collection.png)
+![ListSchema](spark-BE/Readme-Images/List-Schema.png)
 
 # The source code.
 The Spark Server was created using NodeJS[Node JS](https://nodejs.org/en/), in application with [Express](https://expressjs.com/) Framework.
@@ -196,6 +202,11 @@ The List Route contains the following logic
 ## Testing the routes
 In order to test the Server Routes, I suggest making use of [Postman](https://www.postman.com/).
 This is what the api routes in my Postman looks like >> [here](https://www.getpostman.com/collections/ecebe42e396249e1fe95) 
+## Examples
+![RegisterRoute](spark-BE/Readme-Images/Register-User.png)
+![LoginRoute](spark-BE/Readme-Images/Login-User.png)
+![GetUserRoute](spark-BE/Readme-Images/Get-User.png)
+
 
 # Web Token
 Web Tokens are most commonly used to identify an authenticated user. They are issued by an authentication server and are consumed by the client-server (to secure its APIs)
