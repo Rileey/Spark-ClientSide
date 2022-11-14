@@ -86,8 +86,8 @@ The spark project would need different collections that can serve the user in th
     isAdmin: Boolean,
     timestamps: true 
 }
-![UsersCollection](spark-BE/Readme-Images/User-Collection.png)
-![UsersSchema](spark-BE/Readme-Images/User-Schema.png)
+![UsersCollection](Readme-Images/User-Collection.png)
+![UsersSchema](Readme-Images/User-Schema.png)
 
 This is what the user collection looks like
 
@@ -103,8 +103,8 @@ This is what the user collection looks like
     genre: String,
     timestamps: true 
 }
-![ContentCollection](spark-BE/Readme-Images/Content-Collection.png)
-![ContentSchema](spark-BE/Readme-Images/Content-Schema.png)
+![ContentCollection](Readme-Images/Content-Collection.png)
+![ContentSchema](Readme-Images/Content-Schema.png)
 
 ## Movie collection and Data Type
 {
@@ -123,8 +123,8 @@ This is what the user collection looks like
     isSeries: Boolean,
     timestamps: true 
 }
-![MovieCollection](spark-BE/Readme-Images/Movies-Collection.png)
-![MovieSchema](spark-BE/Readme-Images/Movies-Schema.png)
+![MovieCollection](Readme-Images/Movies-Collection.png)
+![MovieSchema](Readme-Images/Movies-Schema.png)
 
 ## Movie List collection and Data Type
 {
@@ -135,8 +135,8 @@ This is what the user collection looks like
     content: Array,
     timestamps: true 
 }
-![ListCollection](spark-BE/Readme-Images/List-Collection.png)
-![ListSchema](spark-BE/Readme-Images/List-Schema.png)
+![ListCollection](Readme-Images/List-Collection.png)
+![ListSchema](Readme-Images/List-Schema.png)
 
 # The source code.
 The Spark Server was created using NodeJS[Node JS](https://nodejs.org/en/), in application with [Express](https://expressjs.com/) Framework.
@@ -203,9 +203,9 @@ The List Route contains the following logic
 In order to test the Server Routes, I suggest making use of [Postman](https://www.postman.com/).
 This is what the api routes in my Postman looks like >> [here](https://www.getpostman.com/collections/ecebe42e396249e1fe95) 
 ## Examples
-![RegisterRoute](spark-BE/Readme-Images/Register-User.png)
-![LoginRoute](spark-BE/Readme-Images/Login-User.png)
-![GetUserRoute](spark-BE/Readme-Images/Get-User.png)
+![RegisterRoute](Readme-Images/Register-User.png)
+![LoginRoute](Readme-Images/Login-User.png)
+![GetUserRoute](Readme-Images/Get-User.png)
 
 
 # Web Token
