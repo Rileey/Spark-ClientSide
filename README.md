@@ -57,7 +57,7 @@ Cloudinary is an end-to-end image and video-management solution for websites and
 
 Learn More >> [here](https://cloudinary.com/documentation/admin_api)
 
-Once a cloudinary ------ has been created. You will be given the following information in order to make use pof cloudinary just like mongodb will give you its URL.
+Once a cloudinary project has been created. You will be given the following information in order to make use pof cloudinary just like mongodb will give you its URL.
 
 SECRET_KEY=talentcroft
 1.  CLOUD_NAME: The cloudname of the service
