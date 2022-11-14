@@ -241,22 +241,6 @@ router.put('/:id/unfollow', async (req, res) => {
 
 //GET ALL
 
-// router.get('/', async (req, res) => {
-//     const query = req.query.new;
-//     // if you are the admin
-//         //get the user using the user id and delete the user.
-//         try {
-//             //fetch the last ten users if there is a query, if not fetch all users excluding you
-//             const users = query ? await User.find().sort({_id: -1}).limit(5) : await User.find().populate({
-//                 path: "_posts",
-//                 select: "description video createdAt _id"
-//             })
-//             res.status(200).json(users);
-//         } catch (err) {
-//             res.status(500).json(err)
-//         }
-// })
-
 router.get('/', async (req, res) => {
     // const query = req.query.new;
     // if you are the admin

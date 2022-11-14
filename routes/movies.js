@@ -1,8 +1,6 @@
 import Movie from '../models/Movie.js';
 import cloudinary from '../utils/cloudinary.js';
-// import Upload from '../utils/multer.js';
 import { storage, SUpload } from '../utils/cloud.js';
-// import cloudinary from '../utils/cloud.js';
 import verify from '../verifyToken.js'
 import express from 'express'
 import Content from '../models/Content.js';
@@ -47,14 +45,6 @@ router.post('/',
                     console.log(error)
                     return res.status(400).json({message: "We need a file"});
                 }
-
-
-            // const result = await cloudinary.uploader.upload(req.file.path, 
-            //     {
-            //         resource_type: "auto",
-            //         folder: "views"
-            //     })
-                
                 let newMovie = await Movie.create({
                     title,
                     description, 
@@ -67,14 +57,6 @@ router.post('/',
                     content
                 });
 
-                    
-                    // newMovie.content = [content]
-                    // await newMovie.save()
-                    // const content = []
-                    // for (const cont of content){
-                    //     // content.push(cont)
-                    //     console.log(cont, 'vvvvvvvvvvvvv')
-                    // }
                     newMovie.content = content
                 
                 console.log(content, '$$$$$$$$$$£££££££££££&&&&&&&&&')
@@ -111,70 +93,14 @@ router.post('/',
                             public_id: filename
                         });
                     };
-
-                    
-                    
-
-                // console.log(req.files.thumbnail, 'pppppppppp')
-                // console.log(req.files.image, 'YYYYYYYY')
-                    
-
-                    // const public_id = []; // array to hold the image urls
-                    // const pid = req.files; // array of images
-                    // for (const file of pid) {
-                    //     const { filename } = file;
-                    //     public_id.push(filename);
-                    // };
-
-                    // console.log(files)
-                    // console.log(image)
-                    
         
                     newMovie.image = image; // add the urls to object
                     newMovie.thumbnail = thumbnail
                     newMovie.trailer = trailer
-
-                    // console.log(trailer, newMovie)
-
-                    // const reduce = par => {
-                    //     return par.reduce((acc, str) => {
-                    //         let char = str.charAt(0).toLowerCase();
-                    //         acc[char] = acc[char] || [];
-                    //         acc[char].push(str.toLowerCase());
-                    //         return acc
-                    //     }, {})
-                    // }
-
-                    // console.log(reduce(image))
-                    console.log(newMovie, '6666666666666')
                 }
                     
                     const savedMovie = await newMovie.save();
                     return res.status(201).json({ savedMovie });
-        
-
-                // const result = await cloudinary.uploader.upload(req.file.path, {
-                //     resource_type: "auto",
-                //     folder: "views"
-                // })
-                // let newMovie = new Movie({
-                //             title: req.body.title,
-                //             description: req.body.description,
-                //             year: req.body.year,
-                //             ageLimit: req.body.ageLimit,
-                //             duration: req.body.duration,
-                //             director: req.body.director,
-                //             genre: req.body.genre,
-                //             image: [],
-                //             isSeries: req.body.isSeries,
-                //             content: req.body.content,
-                //             public_id: result.public_id
-                //         });
-
-
-
-                // const savedMovie = await newMovie.save()
-                // return res.status(200).json({message: 'success', data: savedMovie})
             } catch (err) {
                 console.log(err, '$$$$$$$');
                 return res.status(400).json({message: "cloudinary error", error: err})
@@ -183,29 +109,6 @@ router.post('/',
         //     res.status(500).json({message: "Server Error"})
         // }
 });
-
-
-// router.put('/:id', verify, async (req, res) => {
-//     if (req.user.isAdmin){
-//         try {
-//             const updatedMovie = await Movie.findByIdAndUpdate(req.params.id,
-
-//                 // UPDATE FIRST
-//                 {$set: req.body},
-                
-//                 //RETURN NEW USER
-//                 {new: true});
-//                 return res.status(200).json(updatedMovie)
-//         } catch (err) {
-//             console.log(err.message)
-//         }
-//     } else {
-//         res.status(403).json(`Only Admin can make changes`)
-//     }
-// })
-
-
-
 
 //UPDATE A MOVIE
 
@@ -341,23 +244,6 @@ router.put('/:id',
 
 //DELETE A MOVIE
 
-// router.delete('/:id', verify, async (req, res) => {
-//     // if you are the admin
-//     if (req.user.isAdmin) {
-//         //fetch the movie using the movie id and delete the user.
-//         try {
-//             await Movie.findByIdAndDelete(req.params.id);
-//             res.status(200).json(`The movie with id ${req.params.id} has been deleted.`);
-//         } catch (err) {
-//             return res.status(500).json(err)
-//         }
-//     } else {
-//         //if the movie id is not the same as the one requested,
-//         //then return this response 'You can only delete your account' 
-//         res.status(403).json(`Only admin can make changes`)
-//     }
-// })
-
 router.delete('/:id', async (req, res) => {
     // if you are the admin
     // if (req.user.isAdmin) {
@@ -416,41 +302,6 @@ router.get('/find/:id', async (req, res) => {
 })
 
 //GET A RANDOM MOVIE
-
-// router.get('/random', verify, async (req, res) => {
-//     // name the query "type"
-//     const type = req.query.type;
-//     let movie;
-
-//         try {
-//             //if the query type is series
-//             if (type === 'series'){
-//                 // fetch one
-//                 return movie = await Movie.aggregate([
-//                     { 
-//                         $match: { isSeries: true },
-//                     },
-//                     {
-//                         $sample: { size: 1 }
-//                     }
-//                 ]);
-//             } else {
-//                 // else fetch a movie
-//                  movie = await Movie.aggregate([
-//                     { 
-//                         $match: { isSeries: false },
-//                     },
-//                     {
-//                         $sample: { size: 1 }
-//                     }
-//                 ]);
-//             }
-//             res.status(200).json({message: 'success', movie})
-//         } catch (err) {
-//              console.log(err)
-//         }
-// })
-
 
 router.get('/random', async (req, res) => {
     const type = req.query.type

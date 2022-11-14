@@ -34,19 +34,11 @@ const MovieSchema = new Schema({
      genre: {
          type: String
     },
-    // content:[
-        //  {contentId: 
-        //     {type: Schema.Types.ObjectId,ref: "Content"}
-        // } 
-        // ],
     content: [{
         type: Schema.Types.ObjectId,
         ref: 'Content'
     
     }],
-    // public_id: {
-    //     type: Array
-    // },
     isSeries: {
         type: Boolean,
         default: false,

@@ -2,8 +2,6 @@
 import express from 'express'
 const router = express.Router();
 import Content from '../models/Content.js';
-// import cloudinary from '../utils/cloudinary.js';
-
 import { storage, SUpload } from '../utils/cloud.js';
 import cloudinary from '../utils/cloud.js';
 
@@ -150,29 +148,6 @@ SUpload.fields([{
     //     res.status(500).json({message: "Server Error"})
     // }
 });
-
-
-
-// router.put('/:id', verify, async (req, res) => {
-//     if (req.user.isAdmin){
-//         try {
-//             const updatedContent = await Content.findByIdAndUpdate(req.params.id,
-
-//                 // UPDATE FIRST
-//                 {$set: req.body},
-                
-//                 //RETURN NEW USER
-//                 {new: true});
-//                 res.status(200).json(updatedContent)
-//         } catch (err) {
-//             console.log(err.message)
-//         }
-//     } else {
-//         res.status(403).json(`Only Admin can make changes`)
-//     }
-// })
-
-
 
 
 
@@ -388,29 +363,6 @@ router.put('/:id', SUpload.fields([{
 
 //DELETE A CONTENT
 
-// router.delete('/:id', verify, async (req, res) => {
-//     // if you are the admin
-//     if (req.user.isAdmin) {
-//         //fetch the movie using the movie id and delete the user.
-//         try {
-//             let content = await Content.findById(req.params.id);
-//             console.log(content.public_id)
-//             await cloudinary.uploader.destroy(content.public_id, { resource_type: "video", 
-//             function(err, result)
-//             {console.log( err, result) }})
-//             await content.remove()
-//             res.status(200).json(`The Content with id ${req.params.id} has been deleted.`);
-//         } catch (err) {
-//             res.status(500).json(err)
-//         }
-//     } else {
-//         //if the Content id is not the same as the one requested,
-//         //then return this response 'You can only delete your account' 
-//         res.status(403).json(`Only admin can make changes`)
-//     }
-// })
-
-
 router.delete('/:id', async (req, res) => {
     // if you are the admin
     // if (req.user.isAdmin) {
@@ -471,84 +423,6 @@ router.get('/find/:id', async (req, res) => {
             res.status(500).json(err)
         }
 })
-
-//GET A RANDOM MOVIE
-
-// router.get('/random', verify, async (req, res) => {
-//     // name the query "type"
-//     const type = req.query.type;
-//     let content;
-//         try {
-//             //if the query type is series
-//             if (type === 'series'){
-//                 // fetch one
-//                 content = await Content.aggregate([
-//                     { 
-//                         $match: { isSeries: true },
-//                     },
-//                     {
-//                         $sample: { size: 1 }
-//                     }
-//                 ]);
-//             } else {
-//                 // else fetch a Content
-//                 content = await Content.aggregate([
-//                     { 
-//                         $match: { isSeries: false },
-//                     },
-//                     {
-//                         $sample: { size: 1 }
-//                     }
-//                 ]);
-//             }
-//             res.status(200).json(content)
-//         } catch (err) {
-//             res.status(500).json(err)
-//         }
-// })
-
-
-//GET USER STATS
-
-// router.get('/stats', async (req, res) => {
-//     const today = new Date();
-//     const lastYear = today.setFullYear(today.setFullYear - 1)
-
-//     const monthsArray = [
-//         'January',
-//         'February',
-//         'March',
-//         'April',
-//         'May',
-//         'June',
-//         'July',
-//         'August',
-//         'September',
-//         'October',
-//         'November',
-//         'December',
-//     ]
-
-//     try {
-//         const data = await User.aggregate([
-//             {
-//                 $project: {
-//                     month: { $month: "$createdAt" },
-//                 }
-//             },
-//             {
-//                 $group: {
-//                     _id: "$month",
-//                     total: { $sum: 1 }
-//                 },
-//             },
-//         ]);
-//         res.status(200).json(data)
-//     } catch (err) {
-//         res.status(500).json(err)
-//     }
-// })
-
 
 //GET ALL MOVIES
 
